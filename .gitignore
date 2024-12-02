@@ -30,3 +30,6 @@
 *.exe
 *.out
 *.app
+
+results/*
+cmake-build-debug-linux_env/*
