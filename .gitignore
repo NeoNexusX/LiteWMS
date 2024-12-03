@@ -31,6 +31,7 @@ build/*
 *.out
 *.app
 
+.parquet
 results/*
 cmake-build-debug*/*
 build/*

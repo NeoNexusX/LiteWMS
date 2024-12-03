@@ -1,5 +1,5 @@
 <component name="ProjectRunConfigurationManager">
-  <configuration default="false" name="LiteWMS" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" WORKING_DIR="file://$PROJECT_DIR$" PASS_PARENT_ENVS_2="true" PROJECT_NAME="LiteWMS" TARGET_NAME="LiteWMS" CONFIG_NAME="Debug-Linux_Env" RUN_TARGET_PROJECT_NAME="LiteWMS" RUN_TARGET_NAME="LiteWMS">
+  <configuration default="false" name="LiteWMS" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" WORKING_DIR="file://$PROJECT_DIR$" PASS_PARENT_ENVS_2="true" PROJECT_NAME="LiteWMS" TARGET_NAME="LiteWMS" CONFIG_NAME="Debug-Msys2_MinGW" RUN_TARGET_PROJECT_NAME="LiteWMS" RUN_TARGET_NAME="LiteWMS">
     <method v="2">
       <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
     </method>
