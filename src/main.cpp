@@ -1,19 +1,27 @@
 #include <iostream>
 #include <sqlite3.h> // SQLite3 的头文件
+#include "spdlog/spdlog.h"
 
-int main(int argc, char* argv[]) {
-    sqlite3* db = nullptr;  // 初始化数据库连接指针为 nullptr
+int main()
+{
+    spdlog::info("Welcome to spdlog!");
+    spdlog::error("Some error message with arg: {}", 1);
 
-    // 尝试打开数据库文件
-    if (const int rc = sqlite3_open("./results/test.db", &db); rc != SQLITE_OK) {  // 检查返回值，确保数据库成功打开
-        std::cerr << "Can't open database: " << sqlite3_errmsg(db) << std::endl;
-        sqlite3_close(db);  // 如果打开失败，也需要确保清理资源
-        return 1;           // 返回非零值表示程序失败
-    }
+    spdlog::warn("Easy padding in numbers like {:08d}", 12);
+    spdlog::critical("Support for int: {0:d};  hex: {0:x};  oct: {0:o}; bin: {0:b}", 42);
+    spdlog::info("Support for floats {:03.2f}", 1.23456);
+    spdlog::info("Positional args are {1} {0}..", "too", "supported");
+    spdlog::info("{:<30}", "left aligned");
 
-    std::cout << "Opened database successfully" << std::endl;
+    spdlog::set_level(spdlog::level::debug); // Set global log level to debug
+    spdlog::debug("This message should be displayed..");
 
-    // 关闭数据库连接
-    sqlite3_close(db);
-    return 0;  // 返回 0 表示程序成功
+    // change log pattern
+    spdlog::set_pattern("[%H:%M:%S %z] [%n] [%^---%L---%$] [thread %t] %v");
+
+    // Compile time log levels
+    // Note that this does not change the current log level, it will only
+    // remove (depending on SPDLOG_ACTIVE_LEVEL) the call on the release code.
+    SPDLOG_TRACE("Some trace message with param {}", 42);
+    SPDLOG_DEBUG("Some debug message");
 }

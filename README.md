@@ -2,11 +2,26 @@
 
 
 
+## 如何clone项目：
+
+```bash
+git clone git@github.com:NeoNexusX/LiteWMS.git
+cd LiteWMS
+git submodule update --init --recursive
+```
+
 ## 技术栈
 
 编程语言：Rust，C++
 
 数据库：SQLite
+
+## 命名要求
+
+- 函数名、类名使用 PascalCase
+- 文件名、变量名使用 snake_case
+- 常量名使用 UPPER_SNAKE_CASE
+- 临时变量允许简短命名
 
 ## **核心功能模块**
 
