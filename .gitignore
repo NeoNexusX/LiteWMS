@@ -34,5 +34,9 @@
 cmake-build-*/*
 *.ivk
 *.pdb
+*.ilk
+*.exp
 .idea/*
 LiteWMS
+.vscode
+install

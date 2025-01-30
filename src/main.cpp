@@ -1,27 +1,27 @@
-#include <iostream>
-#include <sqlite3.h> // SQLite3 的头文件
-#include "spdlog/spdlog.h"
+#include <git2.h>
+#include <stdio.h>
 
-int main()
-{
-    spdlog::info("Welcome to spdlog!");
-    spdlog::error("Some error message with arg: {}", 1);
+int main() {
+    git_repository *repo = NULL;
+    int error;
 
-    spdlog::warn("Easy padding in numbers like {:08d}", 12);
-    spdlog::critical("Support for int: {0:d};  hex: {0:x};  oct: {0:o}; bin: {0:b}", 42);
-    spdlog::info("Support for floats {:03.2f}", 1.23456);
-    spdlog::info("Positional args are {1} {0}..", "too", "supported");
-    spdlog::info("{:<30}", "left aligned");
+    // 初始化 libgit2
+    git_libgit2_init();
 
-    spdlog::set_level(spdlog::level::debug); // Set global log level to debug
-    spdlog::debug("This message should be displayed..");
+    // 打开一个 Git 仓库
+    error = git_repository_open(&repo, "../"); // 假设当前目录下有一个 Git 仓库
 
-    // change log pattern
-    spdlog::set_pattern("[%H:%M:%S %z] [%n] [%^---%L---%$] [thread %t] %v");
+    if (error == 0) {
+        // 打印仓库的路径
+        printf("Repository path: %s\n", git_repository_path(repo));
+        git_repository_free(repo);
+    } else {
+        // 如果打开仓库失败，打印错误信息
+        fprintf(stderr, "Failed to open repository: %s\n", git_error_last()->message);
+    }
 
-    // Compile time log levels
-    // Note that this does not change the current log level, it will only
-    // remove (depending on SPDLOG_ACTIVE_LEVEL) the call on the release code.
-    SPDLOG_TRACE("Some trace message with param {}", 42);
-    SPDLOG_DEBUG("Some debug message");
+    // 清理 libgit2
+    git_libgit2_shutdown();
+
+    return 0;
 }
