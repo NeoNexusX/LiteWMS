@@ -7,12 +7,11 @@ set(CMAKE_C_STANDARD 90)
 
 # set runtime file directory
 set(BUILD ${PROJECT_SOURCE_DIR}/build)
-set(EXECUTABLE_OUTPUT_PATH  ${BUILD})
 set(INSTALL ${PROJECT_SOURCE_DIR}/install)
-
 set(EXTERNAL ${PROJECT_SOURCE_DIR}/external)
 set(SPDLOG_PATH ${EXTERNAL}/include/logger)
 set(LIBGIT2_PATH ${EXTERNAL}/libgit2)
+set(EXECUTABLE_OUTPUT_PATH  ${BUILD})
 
 #set pbd avoid pbd in a different directory
 set(CMAKE_PDB_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/pdb)
@@ -27,9 +26,7 @@ include_directories(${PROJECT_SOURCE_DIR}/include
 )
 
 # auto find dll or lib
-link_directories(${EXTERNAL}/sqlite3
-        ${LIBGIT2_PATH}
-)
+link_directories(${EXTERNAL}/sqlite3)
 
 #settings for libgit
 set(LINK_WITH_STATIC_LIBRARIES ON)
@@ -43,7 +40,6 @@ set(USE_SSH OFF CACHE BOOL "Disable SSH" FORCE)
 set(STATIC_CRT OFF CACHE BOOL "Disable CRT lib" FORCE)
 
 # SET CMAKE INSTALL PREFIX:
-
 set(CMAKE_INSTALL_LIBDIR ${INSTALL})
 set(CMAKE_INSTALL_PREFIX ${INSTALL})
 set(CMAKE_INSTALL_BINDIR ${INSTALL})
