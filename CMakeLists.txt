@@ -78,4 +78,5 @@ elseif(UNIX)
     # 查找 SQLite3 包
     find_package(SQLite3 REQUIRED)
     target_link_libraries(LiteWMS ${SQLite3_LIBRARIES})
+    target_link_libraries(LiteWMS libgit2package)
 endif ()
